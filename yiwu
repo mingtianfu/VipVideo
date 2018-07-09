@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body{
+			    font: 12px/1.5 Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			    background: black;
+			}
+			body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, form, th, td {
+                margin: 0;
+                padding: 0;
+            }
+            a{
+                text-decoration: none;
+            }
+            .main{
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .top{
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                width: 100%;
+                height: 120px;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                color: #fff;
+                font-size: 50px;
+            }
+            .top img{
+                padding-right: 30px;
+            }
+            .menu{
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                width: 750px;
+                height: 40px;
+                margin-right: auto;
+                margin-left: auto;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+            }
+            .menu-item{
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+            }
+            .menu-item a{           
+                height: 40px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                padding-top: 1px;
+                padding-right: 0px;
+                padding-left: 0px;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-align-self: stretch;
+                -ms-flex-item-align: stretch;
+                align-self: center;
+                -webkit-transition: opacity 200ms ease;
+                transition: opacity 200ms ease;
+                color: #fff;
+                font-size: 10px;
+                line-height: 10px;
+                font-weight: 500;
+                letter-spacing: 1.5px;               
+                text-transform: uppercase;
+            }
+            .tab{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            .caret {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                vertical-align: top;
+                border-top: 4px solid #fff;
+                border-right: 4px solid transparent;
+                border-left: 4px solid transparent;
+                content: "";
+                margin-left: 5px;
+                border-bottom-color: #fff;
+            }
+            .dropdown-menu{
+                position: relative;
+                background: #FFFFFF;
+            }
+            .dropdown-menu li a{
+                padding: 0 10px;
+                border-bottom: 1px solid #000;
+                color: #000;
+            }  
+            .products{
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                margin-right: auto;
+                margin-left: auto;
+                flex-direction: row;
+                padding: 0 15%;
+                width: 70%;
+                background: #0e0f10;
+            }
+            .products-menu{
+                width: 250px;
+                margin-right: 20px;
+                background: #000000;
+            }  
+            .products-menu .title{
+                padding-left: 20px;
+                font-size: 20px;
+                line-height: 80px;
+                color: #fff;
+                border-bottom: 2px solid #a9a9a9;
+            }
+            .products-menu li{
+                margin-left: 30px;
+                border-bottom: 1px solid #a9a9a9;
+            }
+            .products-menu li a{
+                line-height: 40px;
+                font-size: 14px;
+                color: #fff;
+            } 
+            .products-list{
+                flex: 1;
+                min-height: 800px;
+                margin-top: 40px;
+            }
+            .products-list ul{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            } 
+            .products-list ul li img{
+                width: 250px;
+                height: 250px;
+            }  
+            .products-list ul li .name{
+                line-height: 40px;
+                color: #fff;
+                font-size: 14px;
+                margin-bottom: 20px;
+            }                                  
+            .bottom{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+                font-size: 18px;
+                background: #000000;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="app" class="main">
+		    <div class="top">
+		        <img src="http://sc02.alicdn.com/kf/HTB11DucLXXXXXX2XpXXq6xXFXXXB.jpg" width="59" height="50">
+		    	Yiwu Jifei
+		    </div>
+			<div class="menu">
+				<div class="menu-item">
+				    <a href="#">Home</a>
+				</div>
+				<div class="menu-item">
+				    <div class="tab">
+	                   <a href="#">Product Categories</a><b class="caret" @click="show1"></b>			    	
+				    </div>
+                    <ul class="dropdown-menu" v-show="isShow1">
+                        <li data-index="category1">
+                            <a href="#">Halloween Product</a>
+                        </li>
+                            <li data-index="category2">
+                            <a href="#">Party Mustache and Beard</a>
+                        </li>
+                            <li data-index="category3">
+                            <a href="#">Party Hat</a>
+                        </li>
+                            <li data-index="category4">
+                            <a href="#">Costume Accessories</a>
+                        </li>
+                            <li data-index="category5">
+                            <a href="#">Kids Animal Costume</a>
+                        </li>
+                            <li data-index="category6">
+                            <a href="#">Party Headband</a>
+                        </li>
+                            <li data-index="category7">
+                            <a href="#">Halloween/Party Glasses</a>
+                        </li>
+                            <li data-index="category8">
+                            <a href="#">Fake Teeth</a>
+                        </li>
+                            <li data-index="category9">
+                            <a href="#">Halloween Sleeve Tattoo</a>
+                        </li>
+                            <li data-index="category10">
+                            <a href="#">Party Wigs</a>
+                        </li>
+                            <li class="menu-footer">
+                            <a href="#">See all categories</a>
+                        </li>
+                    </ul>				    
+				</div>
+				<div class="menu-item">
+                    <div class="tab">
+                       <a href="#">Company Profile</a><b class="caret" @click="show2"></b>                  
+                    </div>				    
+                    <ul class="dropdown-menu" v-show="isShow2">
+                        <li><a href="#">Company Overview</a></li>
+                        <li><a href="#">Industrial Certification</a></li>
+                        <li><a href="#">Company Capability</a></li>
+                        <li><a href="#">Business Performance</a></li>
+                    </ul>				    
+				</div>
+				<div class="menu-item">
+				    <a href="#">Contacts</a>
+				</div>
+			</div>
+		    <div class="banner">
+		    	<img style="width: 100%;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531159140862&di=f5765fd4035fbfdb9de126f0d6d47ea1&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2Fqk%2Fback_origin_pic%2F00%2F03%2F76%2F1932ffac37a649a327090aa41226fd38.jpg"/>
+		    </div>
+		    <div class="products">
+		    	<div class="products-menu">
+		    	    <div class="title">
+		    	    	Product Categories
+		    	    </div>
+                    <ul>
+                    	<li><a href="#">Halloween Product</a></li>
+                    	<li><a href="#">Party Mustache and Beard</a></li>
+                    	<li><a href="#">Party Hat</a></li>
+                    	<li><a href="#">Party Mustache and Beard</a></li>
+                    </ul>		    		
+		    	</div>
+		    	<div class="products-list">
+		    		<ul>
+		    			<li>
+		    			    <img src="//sc02.alicdn.com/kf/HTB1SH63JpXXXXbAXpXXq6xXFXXXk/Hot-sale-fashion-stylish-unique-60s-70s.jpg_120x120.jpg"/>
+		    			    <div class="name">Hot sale fashion stylish unique 60s...</div>
+		    			</li>
+                        <li>
+                            <img src="//sc01.alicdn.com/kf/HTB15xZLbamgSKJjSsplq6yICpXaf/Hot-Sale-Good-Quality-Party-Mustache-Moustache.jpg_120x120.jpg"/>
+                            <div class="name">Hot Sale Good Quality Party Mustach...</div>
+                        </li>
+                        <li>
+                            <img src="//sc02.alicdn.com/kf/HTB1SH63JpXXXXbAXpXXq6xXFXXXk/Hot-sale-fashion-stylish-unique-60s-70s.jpg_120x120.jpg"/>
+                            <div class="name">Hot sale fashion stylish unique 60s...</div>
+                        </li>
+                        <li>
+                            <img src="//sc01.alicdn.com/kf/HTB15xZLbamgSKJjSsplq6yICpXaf/Hot-Sale-Good-Quality-Party-Mustache-Moustache.jpg_120x120.jpg"/>
+                            <div class="name">Hot Sale Good Quality Party Mustach...</div>
+                        </li>
+                        <li>
+                            <img src="//sc02.alicdn.com/kf/HTB1SH63JpXXXXbAXpXXq6xXFXXXk/Hot-sale-fashion-stylish-unique-60s-70s.jpg_120x120.jpg"/>
+                            <div class="name">Hot sale fashion stylish unique 60s...</div>
+                        </li>
+                        <li>
+                            <img src="//sc01.alicdn.com/kf/HTB15xZLbamgSKJjSsplq6yICpXaf/Hot-Sale-Good-Quality-Party-Mustache-Moustache.jpg_120x120.jpg"/>
+                            <div class="name">Hot Sale Good Quality Party Mustach...</div>
+                        </li>
+                        <li>
+                            <img src="//sc02.alicdn.com/kf/HTB1SH63JpXXXXbAXpXXq6xXFXXXk/Hot-sale-fashion-stylish-unique-60s-70s.jpg_120x120.jpg"/>
+                            <div class="name">Hot sale fashion stylish unique 60s...</div>
+                        </li>
+                        <li>
+                            <img src="//sc01.alicdn.com/kf/HTB15xZLbamgSKJjSsplq6yICpXaf/Hot-Sale-Good-Quality-Party-Mustache-Moustache.jpg_120x120.jpg"/>
+                            <div class="name">Hot Sale Good Quality Party Mustach...</div>
+                        </li>  
+                        <li>
+                            <img src="//sc02.alicdn.com/kf/HTB1SH63JpXXXXbAXpXXq6xXFXXXk/Hot-sale-fashion-stylish-unique-60s-70s.jpg_120x120.jpg"/>
+                            <div class="name">Hot sale fashion stylish unique 60s...</div>
+                        </li>
+                        <li>
+                            <img src="//sc01.alicdn.com/kf/HTB15xZLbamgSKJjSsplq6yICpXaf/Hot-Sale-Good-Quality-Party-Mustache-Moustache.jpg_120x120.jpg"/>
+                            <div class="name">Hot Sale Good Quality Party Mustach...</div>
+                        </li>
+                        <li>
+                            <img src="//sc02.alicdn.com/kf/HTB1SH63JpXXXXbAXpXXq6xXFXXXk/Hot-sale-fashion-stylish-unique-60s-70s.jpg_120x120.jpg"/>
+                            <div class="name">Hot sale fashion stylish unique 60s...</div>
+                        </li>
+                        <li>
+                            <img src="//sc01.alicdn.com/kf/HTB15xZLbamgSKJjSsplq6yICpXaf/Hot-Sale-Good-Quality-Party-Mustache-Moustache.jpg_120x120.jpg"/>
+                            <div class="name">Hot Sale Good Quality Party Mustach...</div>
+                        </li>                         
+		    		</ul>
+		    	</div>
+		    </div>
+		    <div class="bottom">
+		    	<a href="#">Yiwu Jifei Import&Export Co., Ltd.</a>
+		    </div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+              el: '#app',
+              data: {
+                isShow1: false,
+                isShow2: false
+              },
+              methods: {
+                  show1: function(){
+                      this.isShow1 = !this.isShow1
+                      this.isShow2 = false
+                  },
+                  show2: function(){
+                      this.isShow2 = !this.isShow2
+                      this.isShow1 = false
+                  }
+              }
+            })
+		</script>
+	</body>
+</html>
